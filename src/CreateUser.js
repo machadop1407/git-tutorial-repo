@@ -8,6 +8,7 @@ function CreateUser() {
     email: "",
     age: "",
     address: "",
+    password: "",
   });
 
   const handleChange = (event) => {
@@ -16,10 +17,6 @@ function CreateUser() {
       ...prevState,
       [name]: value,
     }));
-  };
-
-  const handleAddressField = (event) => {
-    setAddress(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -62,7 +59,16 @@ function CreateUser() {
           type="address"
           name="address"
           value={address}
-          onChange={handleAddressField}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
         />
       </div>
       <button type="submit">Create User</button>
