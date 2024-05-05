@@ -1,18 +1,21 @@
-// src/components/CreateUser.js on the main branch
+// src/components/CreateUser.js on the adding-age-field branch
 
 import React, { useState } from "react";
 
 function CreateUser() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    age: "",
+    address: "",
+  });
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUser((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleAddressField = (event) => {
@@ -21,8 +24,7 @@ function CreateUser() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("User Created:", { username, email, address });
-    // Additional validation for username and email
+    console.log("User Created:", user);
   };
 
   return (
@@ -32,8 +34,8 @@ function CreateUser() {
         <input
           type="text"
           name="username"
-          value={username}
-          onChange={handleUsernameChange}
+          value={user.username}
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -41,8 +43,17 @@ function CreateUser() {
         <input
           type="email"
           name="email"
-          value={email}
-          onChange={handleEmailChange}
+          value={user.email}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>Age:</label>
+        <input
+          type="number"
+          name="age"
+          value={user.age}
+          onChange={handleChange}
         />
       </div>
       <div>
