@@ -5,6 +5,7 @@ import React, { useState } from "react";
 function CreateUser() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -14,9 +15,13 @@ function CreateUser() {
     setEmail(event.target.value);
   };
 
+  const handleAddressField = (event) => {
+    setAddress(event.target.value);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("User Created:", { username, email });
+    console.log("User Created:", { username, email, address });
     // Additional validation for username and email
   };
 
@@ -38,6 +43,15 @@ function CreateUser() {
           name="email"
           value={email}
           onChange={handleEmailChange}
+        />
+      </div>
+      <div>
+        <label>Address:</label>
+        <input
+          type="address"
+          name="address"
+          value={address}
+          onChange={handleAddressField}
         />
       </div>
       <button type="submit">Create User</button>
